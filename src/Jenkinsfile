@@ -18,7 +18,7 @@ pipeline {
         stage('Set JDK') {
                     steps {
                 // Установка и использование JDK 17
-                        tool name: 'jdk-17', type: 'jdk'
+                        tool name: 'jdk', type: 'jdk'
                     }
                 }
          stage('Set JDK') {
