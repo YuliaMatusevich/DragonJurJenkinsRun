@@ -1,0 +1,69 @@
+pipeline {
+    agent any
+    environment {
+        BROWSER_OPTIONS = 'browserType=chromium;width=1366;height=768;headless=true;slowMo=0;tracing=true;video=true'
+        WEB_OPTIONS = "username=${env.USERNAME};password=${env.PASSWORD};baseUrl=${env.BASE_URL};commonEmailPart=${env.COMMON_EMAIL_PART};apiBaseUrl=${env.API_BASE_URL};adminUsername=${env.ADMIN_USERNAME};adminPassword=${env.ADMIN_PASSWORD}"
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                // Шаг клонирования репозитория
+                git branch: 'main', url: 'https://github.com/DragonPWJur/DragonJur'
+            }
+        }
+        stage('Install JDK') {
+            steps {
+                // Шаг установки JDK
+                sh 'apt-get update && apt-get install -y openjdk-17-jdk'
+            }
+        }
+        stage('Build & Install') {
+            steps {
+                // Шаг сборки и установки проекта
+                sh 'mvn -B install -D skipTests --no-transfer-progress'
+            }
+        }
+        stage('Install Playwright') {
+            steps {
+                // Шаг установки Playwright
+                sh 'mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"'
+            }
+        }
+        stage('Run tests') {
+            steps {
+                // Шаг запуска тестов
+                sh 'mvn clean test -Dsurefire'
+            }
+        }
+        stage('Create test report') {
+            steps {
+                // Шаг создания отчета о тестировании
+                // Добавьте соответствующие шаги для обработки результатов тестов
+            }
+        }
+        stage('Attach artifacts on failure') {
+            steps {
+                // Шаг прикрепления артефактов в случае ошибки
+                // Добавьте соответствующие шаги для обработки ошибок и прикрепления артефактов
+            }
+        }
+        stage('Get Allure history') {
+            steps {
+                // Шаг получения истории Allure
+                // Добавьте соответствующие шаги для получения истории Allure
+            }
+        }
+        stage('Allure Report action') {
+            steps {
+                // Шаг создания отчета Allure
+                // Добавьте соответствующие шаги для создания отчета Allure
+            }
+        }
+//         stage('Deploy report to Github Pages') {
+//             steps {
+//                 // Шаг развертывания отчета на GitHub Pages
+//                 // Добавьте соответствующие шаги для развертывания отчета на GitHub Pages
+//             }
+//         }
+    }
+}
