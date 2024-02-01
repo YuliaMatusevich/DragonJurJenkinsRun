@@ -23,15 +23,15 @@ pipeline {
 //                         }
 //                     }
 //                 }
-        stage('Install JDK') {
-                    steps {
-                        // Скачиваем и устанавливаем JDK для Windows
-                        bat 'curl -LO https://download.java.net/java/early_access/jdk17/15/GPL/openjdk-17-ea+15_windows-x64_bin.zip'
-                        bat 'Expand-Archive -Path ./openjdk-17-ea+15_windows-x64_bin.zip -DestinationPath %JDK_HOME%'
-                        bat 'setx JAVA_HOME "%JDK_HOME%"'
-                        bat 'setx PATH "%PATH%;%JDK_HOME%/bin"'
-                    }
-                }
+//         stage('Install JDK') {
+//                     steps {
+//                         // Скачиваем и устанавливаем JDK для Windows
+//                         bat 'curl -LO https://download.java.net/java/early_access/jdk17/15/GPL/openjdk-17-ea+15_windows-x64_bin.zip'
+//                         bat 'Expand-Archive -Path ./openjdk-17-ea+15_windows-x64_bin.zip -DestinationPath %JDK_HOME%'
+//                         bat 'setx JAVA_HOME "%JDK_HOME%"'
+//                         bat 'setx PATH "%PATH%;%JDK_HOME%/bin"'
+//                     }
+//                 }
 
         stage('Build & Install') {
             steps {
