@@ -4,9 +4,9 @@ pipeline {
         BROWSER_OPTIONS = 'browserType=chromium;width=1366;height=768;headless=true;slowMo=0;tracing=true;video=true'
         WEB_OPTIONS = "username=pw.new.test.23+20@gmail.com;password=RFbf916!)!;baseUrl=${env.BASE_URL};commonEmailPart=${env.COMMON_EMAIL_PART};apiBaseUrl=${env.API_BASE_URL};adminUsername=${env.ADMIN_USERNAME};adminPassword=${env.ADMIN_PASSWORD}"
     }
-    tools {
-            jdk 'jdk-17'
-        }
+//     tools {
+//             jdk 'jdk-17'
+//         }
     stages {
         stage('Checkout') {
             steps {
@@ -39,7 +39,7 @@ pipeline {
         stage('Run tests') {
             steps {
                 // Шаг запуска тестов
-                bat 'mvn clean test'
+                bat 'mvn clean test -Dsurefire -Dmaven.compiler.source=17'
             }
         }
 //         stage('Create test report') {
