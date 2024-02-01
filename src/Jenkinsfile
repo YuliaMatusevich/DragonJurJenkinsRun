@@ -8,7 +8,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Шаг клонирования репозитория
-                git branch: 'main', url: 'https://github.com/DragonPWJur/DragonJur'
+                git branch: 'main', url: 'https://github.com/YuliaMatusevich/DragonJurJenkinsRun'
             }
         }
         stage('Install JDK') {
