@@ -21,14 +21,14 @@ pipeline {
                         tool name: 'jdk', type: 'jdk'
                     }
                 }
-         stage('Set JDK') {
-                    steps {
-                        script {
-                            // Установка JAVA_HOME в соответствии с JDK, доступной в Jenkins
-                            env.JAVA_HOME = tool 'jdk'
-                        }
-                    }
-                }
+//          stage('Set JDK') {
+//                     steps {
+//                         script {
+//                             // Установка JAVA_HOME в соответствии с JDK, доступной в Jenkins
+//                             env.JAVA_HOME = tool 'jdk'
+//                         }
+//                     }
+//                 }
 //         stage('Install JDK') {
 //                     steps {
 //                         // Скачиваем и устанавливаем JDK для Windows
