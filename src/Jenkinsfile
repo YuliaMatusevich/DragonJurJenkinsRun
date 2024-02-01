@@ -15,20 +15,14 @@ pipeline {
 //                 git branch: 'main', url: 'https://github.com/YuliaMatusevich/DragonJurJenkinsRun'
 //             }
 //         }
-        stage('Set JDK') {
+         stage('Set JDK') {
                     steps {
-                // Установка и использование JDK 17
-                        tool name: 'jdk', type: 'jdk'
+                        script {
+                            // Установка JAVA_HOME в соответствии с JDK, доступной в Jenkins
+                            env.JAVA_HOME = tool 'jdk'
+                        }
                     }
                 }
-//          stage('Set JDK') {
-//                     steps {
-//                         script {
-//                             // Установка JAVA_HOME в соответствии с JDK, доступной в Jenkins
-//                             env.JAVA_HOME = tool 'jdk'
-//                         }
-//                     }
-//                 }
 //         stage('Install JDK') {
 //                     steps {
 //                         // Скачиваем и устанавливаем JDK для Windows
