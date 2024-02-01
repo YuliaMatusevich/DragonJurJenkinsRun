@@ -4,6 +4,9 @@ pipeline {
         BROWSER_OPTIONS = 'browserType=chromium;width=1366;height=768;headless=true;slowMo=0;tracing=true;video=true'
         WEB_OPTIONS = "username=${env.USERNAME};password=${env.PASSWORD};baseUrl=${env.BASE_URL};commonEmailPart=${env.COMMON_EMAIL_PART};apiBaseUrl=${env.API_BASE_URL};adminUsername=${env.ADMIN_USERNAME};adminPassword=${env.ADMIN_PASSWORD}"
     }
+    tools {
+            jdk 'jdk-17'
+        }
     stages {
         stage('Checkout') {
             steps {
@@ -11,28 +14,31 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/YuliaMatusevich/DragonJurJenkinsRun'
             }
         }
-        stage('Install JDK') {
-            steps {
-                // Шаг установки JDK
-                sh 'apt-get update && apt-get install -y openjdk-17-jdk'
-            }
-        }
+//         stage('Install JDK') {
+//                     steps {
+//                         // Скачиваем и устанавливаем JDK для Windows
+//                         bat 'curl -LO https://download.java.net/java/early_access/jdk17/15/GPL/openjdk-17-ea+15_windows-x64_bin.zip'
+//                         bat 'Expand-Archive -Path ./openjdk-17-ea+15_windows-x64_bin.zip -DestinationPath %JDK_HOME%'
+//                         bat 'setx JAVA_HOME "%JDK_HOME%"'
+//                         bat 'setx PATH "%PATH%;%JDK_HOME%/bin"'
+//                     }
+//                 }
         stage('Build & Install') {
             steps {
                 // Шаг сборки и установки проекта
-                sh 'mvn -B install -D skipTests --no-transfer-progress'
+                bat 'mvn -B install -D skipTests --no-transfer-progress'
             }
         }
         stage('Install Playwright') {
             steps {
                 // Шаг установки Playwright
-                sh 'mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"'
+                bat 'mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"'
             }
         }
         stage('Run tests') {
             steps {
                 // Шаг запуска тестов
-                sh 'mvn clean test -Dsurefire'
+                bat 'mvn clean test -Dsurefire'
             }
         }
 //         stage('Create test report') {
