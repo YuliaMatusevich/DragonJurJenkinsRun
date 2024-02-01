@@ -39,12 +39,12 @@ pipeline {
 //                 bat 'mvn -B install -D skipTests --no-transfer-progress'
 //             }
 //         }
-        stage('Install Playwright') {
-            steps {
-                // Шаг установки Playwright
-                bat 'mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"'
-            }
-        }
+//         stage('Install Playwright') {
+//             steps {
+//                 // Шаг установки Playwright
+//                 bat 'mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"'
+//             }
+//         }
         stage('Clean') {
             steps {
                 // Шаг запуска тестов
