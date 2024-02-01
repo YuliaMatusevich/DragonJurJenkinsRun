@@ -45,7 +45,6 @@ pipeline {
             steps {
                 // Шаг установки Playwright
                bat 'mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"'
-'
             }
         }
         stage('Clean') {
