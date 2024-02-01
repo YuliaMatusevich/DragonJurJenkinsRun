@@ -1,20 +1,26 @@
 pipeline {
     agent any
-    environment {
-        BROWSER_OPTIONS = 'browserType=chromium;width=1366;height=768;headless=true;slowMo=0;tracing=true;video=true'
-        WEB_OPTIONS = "username=pw.new.test.23+20@gmail.com;password=RFbf916!)!;baseUrl=${env.BASE_URL};commonEmailPart=${env.COMMON_EMAIL_PART};apiBaseUrl=${env.API_BASE_URL};adminUsername=${env.ADMIN_USERNAME};adminPassword=${env.ADMIN_PASSWORD}"
-    }
+//     environment {
+//         BROWSER_OPTIONS = 'browserType=chromium;width=1366;height=768;headless=true;slowMo=0;tracing=true;video=true'
+//         WEB_OPTIONS = "username=pw.new.test.23+20@gmail.com;password=RFbf916!)!;baseUrl=${env.BASE_URL};commonEmailPart=${env.COMMON_EMAIL_PART};apiBaseUrl=${env.API_BASE_URL};adminUsername=${env.ADMIN_USERNAME};adminPassword=${env.ADMIN_PASSWORD}"
+//     }
     tools {
             jdk 'jdk'
         }
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Шаг клонирования репозитория
-                git branch: 'main', url: 'https://github.com/YuliaMatusevich/DragonJurJenkinsRun'
-            }
-        }
+//         stage('Checkout') {
+//             steps {
+//                 // Шаг клонирования репозитория
+//                 git branch: 'main', url: 'https://github.com/YuliaMatusevich/DragonJurJenkinsRun'
+//             }
+//         }
+        stage('Set JDK') {
+                    steps {
+                // Установка и использование JDK 17
+                        tool name: 'jdk-17', type: 'jdk'
+                    }
+                }
          stage('Set JDK') {
                     steps {
                         script {
