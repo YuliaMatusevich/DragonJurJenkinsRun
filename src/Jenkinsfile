@@ -42,13 +42,13 @@ pipeline {
         stage('Install Playwright') {
             steps {
                 // Шаг установки Playwright
-                bat '"mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps""'
+                sh 'mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"'
             }
         }
         stage('Clean') {
             steps {
                 // Шаг запуска тестов
-                bat 'mvn clean'
+                sh 'mvn clean'
 //              bat 'mvn clean test -Dsurefire -Dmaven.compiler.source=17'
             }
         }
