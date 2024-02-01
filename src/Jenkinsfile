@@ -25,26 +25,44 @@ pipeline {
 //                     }
 //                 }
 
-        stage('Build & Install') {
-            steps {
-                // Шаг сборки и установки проекта
-                bat 'mvn -B install -D skipTests --no-transfer-progress'
-            }
-        }
+//         stage('Build & Install') {
+//             steps {
+//                 // Шаг сборки и установки проекта
+//                 bat 'mvn -B install -D skipTests --no-transfer-progress'
+//             }
+//         }
         stage('Install Playwright') {
             steps {
                 // Шаг установки Playwright
                 bat 'mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"'
             }
         }
-        stage('Run tests') {
+        stage('Clean') {
             steps {
                 // Шаг запуска тестов
-                bat 'mvn clean test'
+                bat 'mvn clean'
 
 //                 bat 'mvn clean test -Dsurefire -Dmaven.compiler.source=17'
             }
         }
+        stage('Compile') {
+             steps {
+                        // Шаг запуска тестов
+                 bat 'mvn compile'
+
+        //                 bat 'mvn clean test -Dsurefire -Dmaven.compiler.source=17'
+             }
+        }
+        stage('Test') {
+             steps {
+                                // Шаг запуска тестов
+                 bat 'mvn test'
+
+                //                 bat 'mvn clean test -Dsurefire -Dmaven.compiler.source=17'
+             }
+        }
+
+
 //         stage('Create test report') {
 //             steps {
 //                 // Шаг создания отчета о тестировании
