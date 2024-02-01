@@ -23,6 +23,7 @@ pipeline {
 //                         bat 'setx PATH "%PATH%;%JDK_HOME%/bin"'
 //                     }
 //                 }
+
         stage('Build & Install') {
             steps {
                 // Шаг сборки и установки проекта
