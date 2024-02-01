@@ -5,7 +5,7 @@ pipeline {
         WEB_OPTIONS = "username=pw.new.test.23+20@gmail.com;password=RFbf916!)!;baseUrl=${env.BASE_URL};commonEmailPart=${env.COMMON_EMAIL_PART};apiBaseUrl=${env.API_BASE_URL};adminUsername=${env.ADMIN_USERNAME};adminPassword=${env.ADMIN_PASSWORD}"
     }
     tools {
-            jdk 'java-17-openjdk'
+            jdk 'jdk-17'
         }
 
     stages {
