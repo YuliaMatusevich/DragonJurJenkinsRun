@@ -9,12 +9,12 @@ pipeline {
         }
 
     stages {
-//         stage('Checkout') {
-//             steps {
-//                 // Шаг клонирования репозитория
-//                 git branch: 'main', url: 'https://github.com/YuliaMatusevich/DragonJurJenkinsRun'
-//             }
-//         }
+        stage('Checkout') {
+            steps {
+                // Шаг клонирования репозитория
+                git branch: 'main', url: 'https://github.com/YuliaMatusevich/DragonJurJenkinsRun'
+            }
+        }
          stage('Set JDK') {
                     steps {
                         script {
