@@ -39,7 +39,7 @@ pipeline {
         stage('Run tests') {
             steps {
                 // Шаг запуска тестов
-                bat 'mvn clean test -Dsurefire'
+                bat 'mvn clean test'
             }
         }
 //         stage('Create test report') {
