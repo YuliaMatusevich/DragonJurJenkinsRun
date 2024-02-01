@@ -33,7 +33,7 @@ abstract class BaseTest {
 
     @BeforeSuite
     void launchBrowser(ITestContext testContext) throws Exception {
-        APINewCustomerUtils.createNewCustomer();
+//        APINewCustomerUtils.createNewCustomer();
 
         LoginUtils.loginAndCollectCookies();
 

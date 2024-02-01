@@ -147,8 +147,8 @@ public final class LoginUtils {
         navigateToBaseUrl();
 
         if (isOnSignInPage()) {
-            page.fill("form input:only-child", APINewCustomerUtils.getUsername());
-            page.fill("input[type='password']", APINewCustomerUtils.getPassword());
+            page.fill("form input:only-child", ProjectProperties.USERNAME);
+            page.fill("input[type='password']", ProjectProperties.PASSWORD);
             page.click("button[type='submit']");
 
             logInfo("Login context: Fill user credentials.");
