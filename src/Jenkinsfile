@@ -4,9 +4,9 @@ pipeline {
         BROWSER_OPTIONS = 'browserType=chromium;width=1366;height=768;headless=true;slowMo=0;tracing=true;video=true'
         WEB_OPTIONS = "username=pw.new.test.23+20@gmail.com;password=RFbf916!)!;baseUrl=${env.BASE_URL};commonEmailPart=${env.COMMON_EMAIL_PART};apiBaseUrl=${env.API_BASE_URL};adminUsername=${env.ADMIN_USERNAME};adminPassword=${env.ADMIN_PASSWORD}"
     }
-//     tools {
-//             jdk 'jdk-17'
-//         }
+    tools {
+            jdk 'java-17-openjdk'
+        }
 
     stages {
         stage('Checkout') {
@@ -25,12 +25,12 @@ pipeline {
 //                     }
 //                 }
 
-//         stage('Build & Install') {
-//             steps {
-//                 // Шаг сборки и установки проекта
-//                 bat 'mvn -B install -D skipTests --no-transfer-progress'
-//             }
-//         }
+        stage('Build & Install') {
+            steps {
+                // Шаг сборки и установки проекта
+                bat 'mvn -B install -D skipTests --no-transfer-progress'
+            }
+        }
         stage('Install Playwright') {
             steps {
                 // Шаг установки Playwright
