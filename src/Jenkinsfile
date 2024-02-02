@@ -35,12 +35,6 @@ pipeline {
 //                     }
 //                 }
 
-//         stage('Build & Install') {
-//             steps {
-//                 // Шаг сборки и установки проекта
-//                 bat 'mvn -B install -D skipTests --no-transfer-progress'
-//             }
-//         }
         stage('Install Playwright') {
               steps {
                  bat 'npm install --global playwright'
