@@ -25,6 +25,7 @@ pipeline {
                  }
              }
          }
+
 //         stage('Install JDK') {
 //                     steps {
 //                         // Скачиваем и устанавливаем JDK для Windows
