@@ -121,7 +121,7 @@ abstract class BaseTest {
                     + ReportUtils.getEndLine());
         }
 
-        APINewCustomerUtils.deleteNewCustomer();
+//        APINewCustomerUtils.deleteNewCustomer();
     }
 
     protected  boolean isOnHomePage() {
