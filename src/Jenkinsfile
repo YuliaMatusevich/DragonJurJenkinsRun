@@ -44,20 +44,20 @@ pipeline {
         stage('Clean') {
             steps {
                 // Шаг запуска тестов
-                sh 'mvn clean'
+                bat 'mvn clean'
 //              bat 'mvn clean test -Dsurefire -Dmaven.compiler.source=17'
             }
         }
         stage('Compile') {
              steps {
                         // Шаг запуска тестов
-                 sh 'mvn compile'
+                 bat 'mvn compile'
              }
         }
         stage('Test') {
              steps {
                                 // Шаг запуска тестов
-                 sh 'mvn test'
+                 bat 'mvn test'
              }
         }
     }
