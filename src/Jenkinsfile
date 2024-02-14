@@ -17,14 +17,15 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/YuliaMatusevich/DragonJurJenkinsRun'
             }
         }
-         stage('Set JDK') {
-             steps {
-                 script {
-                     // Установка JAVA_HOME в соответствии с JDK, доступной в Jenkins
-                     env.JAVA_HOME = tool 'jdk'
-                 }
-             }
-         }
+//          stage('Set JDK') {
+//              steps {
+//                  script {
+//                      // Установка JAVA_HOME в соответствии с JDK, доступной в Jenkins
+//                      env.JAVA_HOME = tool 'jdk'
+//                  }
+//              }
+//          }
+
 //         stage('Install JDK') {
 //                     steps {
 //                         // Скачиваем и устанавливаем JDK для Windows
@@ -35,11 +36,11 @@ pipeline {
 //                     }
 //                 }
 
-        stage('Install Playwright') {
-              steps {
-                 bat 'npm install --global playwright'
-              }
-        }
+//         stage('Install Playwright') {
+//               steps {
+//                  sh 'npm install --global playwright'
+//               }
+//         }
         stage('Clean') {
             steps {
                 // Шаг запуска тестов
@@ -50,13 +51,13 @@ pipeline {
         stage('Compile') {
              steps {
                         // Шаг запуска тестов
-                 bat 'mvn compile'
+                 sh 'mvn compile'
              }
         }
         stage('Test') {
              steps {
                                 // Шаг запуска тестов
-                 bat 'mvn test'
+                 sh 'mvn test'
              }
         }
     }
