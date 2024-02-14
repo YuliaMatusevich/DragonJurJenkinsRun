@@ -17,14 +17,14 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/YuliaMatusevich/DragonJurJenkinsRun'
             }
         }
-//          stage('Set JDK') {
-//              steps {
-//                  script {
-//                      // Установка JAVA_HOME в соответствии с JDK, доступной в Jenkins
-//                      env.JAVA_HOME = tool 'jdk'
-//                  }
-//              }
-//          }
+         stage('Set JDK') {
+             steps {
+                 script {
+                     // Установка JAVA_HOME в соответствии с JDK, доступной в Jenkins
+                     env.JAVA_HOME = tool 'jdk'
+                 }
+             }
+         }
 
 //         stage('Install JDK') {
 //                     steps {
@@ -44,20 +44,20 @@ pipeline {
         stage('Clean') {
             steps {
                 // Шаг запуска тестов
-                sh 'mvn clean'
+                bat 'mvn clean'
 //              bat 'mvn clean test -Dsurefire -Dmaven.compiler.source=17'
             }
         }
         stage('Compile') {
              steps {
                         // Шаг запуска тестов
-                 sh 'mvn compile'
+                 bat 'mvn compile'
              }
         }
         stage('Test') {
              steps {
                                 // Шаг запуска тестов
-                 sh 'mvn test'
+                 bat 'mvn test'
              }
         }
     }
