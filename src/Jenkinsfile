@@ -1,14 +1,18 @@
 pipeline {
     agent any
-    environment {
-        JAVA_HOME = "${tool 'jdk'}" // Замените 'Your_JDK_Tool_Name' на имя JDK в настройках Jenkins
-        PATH = "${JAVA_HOME}/bin:${PATH}" // Обновление переменной PATH для включения пути к bin директории JDK
-        BROWSER_OPTIONS = 'browserType=chromium;width=1366;height=768;headless=true;slowMo=0;tracing=true;video=true'
-        WEB_OPTIONS = "username=pw.new.test.23+20@gmail.com;password=RFbf916!)!;baseUrl=${env.BASE_URL};commonEmailPart=${env.COMMON_EMAIL_PART};apiBaseUrl=${env.API_BASE_URL};adminUsername=${env.ADMIN_USERNAME};adminPassword=${env.ADMIN_PASSWORD}"
-    }
-    tools {
-            jdk 'jdk'
-        }
+//     environment {
+//         JAVA_HOME = "${tool 'jdk'}" // Замените 'Your_JDK_Tool_Name' на имя JDK в настройках Jenkins
+//         PATH = "${JAVA_HOME}/bin:${PATH}" // Обновление переменной PATH для включения пути к bin директории JDK
+//         BROWSER_OPTIONS = 'browserType=chromium;width=1366;height=768;headless=true;slowMo=0;tracing=true;video=true'
+//         WEB_OPTIONS = "username=pw.new.test.23+20@gmail.com;password=RFbf916!)!;baseUrl=${env.BASE_URL};commonEmailPart=${env.COMMON_EMAIL_PART};apiBaseUrl=${env.API_BASE_URL};adminUsername=${env.ADMIN_USERNAME};adminPassword=${env.ADMIN_PASSWORD}"
+//     }
+//     tools {
+//             jdk 'jdk'
+//         }
+
+
+
+
 
     stages {
         stage('Checkout') {
